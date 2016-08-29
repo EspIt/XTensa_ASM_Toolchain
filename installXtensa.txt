@@ -1,0 +1,12 @@
+sudo mkdir /opt/Espressif
+cd /opt/Espressif
+sudo chmod 755 ./
+git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git
+cd crosstool-NG
+sudo ./bootstrap && sudo ./configure --prefix='/opt/Espressif/crosstool-NG/pwd' && sudo make && sudo 
+make install
+sudo ./ct-ng xtensa-lx106-elf
+sudo chmod -R 755 ./
+./ct-ng build
+PATH=$PWD/builds/xtensa-lx106-elf/bin:$PATH
+
